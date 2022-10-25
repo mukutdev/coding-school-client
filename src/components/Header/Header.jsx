@@ -20,21 +20,21 @@ const Header = () => {
           <nav className="flex justify-between">
             <NavLink
               style={({ isActive }) => (isActive ? activeClass : undefined)}
-              className="mr-3 py-3 px-6 uppercase hover:bg-gray-800 hover:text-white text-base tracking-widest font-medium rounded-lg"
+              className="mr-3 py-3 px-6 uppercase hover:bg-blue-600 hover:text-white text-base tracking-widest font-medium rounded-lg"
               to={"/courses"}
             >
               Courses
             </NavLink>
             <NavLink
               style={({ isActive }) => (isActive ? activeClass : undefined)}
-              className="mr-3 py-3 px-6 uppercase hover:bg-gray-800 hover:text-white text-base tracking-widest font-medium rounded-lg"
+              className="mr-3 py-3 px-6 uppercase hover:bg-blue-600 hover:text-white text-base tracking-widest font-medium rounded-lg"
               to={"/blogs"}
             >
               Blogs
             </NavLink>
             <NavLink
               style={({ isActive }) => (isActive ? activeClass : undefined)}
-              className="mr-3 py-3 px-6 uppercase hover:bg-gray-800 hover:text-white text-base tracking-widest font-medium rounded-lg"
+              className="mr-3 py-3 px-6 uppercase hover:bg-blue-600 hover:text-white text-base tracking-widest font-medium rounded-lg"
               to={"/faq"}
             >
               Faq
@@ -44,7 +44,7 @@ const Header = () => {
         <div>
           <div>
             <Link to={"/login"}>
-              <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-gray-800 text-white text-base tracking-widest font-medium rounded-lg">
+              <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-blue-600 text-white text-base tracking-widest font-medium rounded-lg">
                 Login
               </button>
             </Link>
