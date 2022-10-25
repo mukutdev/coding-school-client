@@ -62,6 +62,9 @@ const Login = () => {
                    </button>
 
               </div>
+              <div className="flex flex-col gap-3 my-4">
+                 <p>New User ? <Link className="text-blue-600 hover:underline" to={'/register'}>Register Now !</Link></p>
+              </div>
             </div>
           </div>
         </div>
