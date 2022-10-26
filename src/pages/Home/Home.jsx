@@ -1,8 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import background from "../../assets/hero_bg_8_2.jpg";
+import CourseCard from "../../components/CourseCard/CourseCard";
 
 const Home = () => {
+  const featuredCourse = useLoaderData();
+  console.log(featuredCourse);
   return (
     <div>
       <div
@@ -22,6 +25,24 @@ const Home = () => {
                 Check Out Courses
               </button>
             </Link>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ backgroundColor: "#F3F7FB" }}>
+        <div className="py-16 container mx-auto">
+          <div className="flex flex-col justify-center">
+            <h2 className="text-blue-600 text-lg text-center font-semibold tracking-widest">
+              POPULAR COURSES
+            </h2>
+            <h3 className="text-4xl font-semibold text-center mt-4">
+              Explore Featured Courses
+            </h3>
+            <div className="my-12 grid grid-cols-3 justify-between gap-14">
+              {featuredCourse.map(course => (
+                <CourseCard key={course.id} course={course}></CourseCard>
+              ))}
+            </div>
           </div>
         </div>
       </div>
