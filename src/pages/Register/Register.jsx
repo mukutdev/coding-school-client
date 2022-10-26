@@ -29,10 +29,10 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         handleUpdateProfile(name, photoUrl)
-        .then(() => {})
-        .catch(err => console.log("error message", err))
+          .then(() => {})
+          .catch(err => console.log("error message", err));
 
-        setMessage(<p>Account created successfully</p>)
+        setMessage(<p>Account created successfully</p>);
       })
       .catch(err => console.log("error message msg", err));
   };

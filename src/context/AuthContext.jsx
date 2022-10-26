@@ -1,18 +1,23 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
+import { useEffect } from "react";
 import app from "../firebase/firebase.config";
 
 export const AuthProviderContext = createContext();
 const auth = getAuth(app);
 
 const AuthContext = ({ children }) => {
-  const user = { name: "Mukut" };
+
+    const [user , setUser] = useState(null || {})
+
 
   // handle new user function
   const handleNewUserWithEmailPass = (email, password) => {
@@ -25,29 +30,52 @@ const AuthContext = ({ children }) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photoUrl,
-    })
-      
+    });
   };
 
-  // handleNewUserSignInWithEmailPass
+  // handleNewUserSignInWithEmailPass function
 
-  const handleSignInWithEmailPass = (email, password)=>{
-    return signInWithEmailAndPassword(auth , email, password);
-  }
+  const handleSignInWithEmailPass = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-  // handleGoogleSignInMethod
+  // handleGoogleSignIn function
 
-  const handleGoogleSignInMethod = (provider)=>{
-     return signInWithPopup(auth , provider)
-  }
+  const handleGoogleSignInMethod = provider => {
+    return signInWithPopup(auth, provider);
+  };
 
-  //handleGithubSignInMethod
+  //handleGithubSignIn function
 
-  const handleGithubSignInMethod = (provider)=>{
-    return signInWithPopup(auth , provider)
-  }
+  const handleGithubSignInMethod = provider => {
+    return signInWithPopup(auth, provider);
+  };
 
-  const userInfo = { user, handleNewUserWithEmailPass, handleUpdateProfile , handleSignInWithEmailPass , handleGoogleSignInMethod,handleGithubSignInMethod };
+  //handleSignOut  function
+
+  const handleSignOut = () => {
+    signOut(auth)
+  };
+
+    // save user info on auth state changed
+    
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth , currentUser =>{
+            setUser(currentUser)
+        })
+        return () => unsubscribe();
+
+    } , [])
+    
+  const userInfo = {
+    user,
+    handleNewUserWithEmailPass,
+    handleUpdateProfile,
+    handleSignInWithEmailPass,
+    handleGoogleSignInMethod,
+    handleGithubSignInMethod,
+    handleSignOut,
+  };
   return (
     <AuthProviderContext.Provider value={userInfo}>
       {children}

@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import { AuthProviderContext } from "../../context/AuthContext";
 
 const Header = () => {
+
+  const { user , handleSignOut} = useContext(AuthProviderContext);
+
   const activeClass = {
     backgroundColor: "#2563eb",
     color: "#fff",
   };
 
+  // handle logout
+ 
+  const handleLogOut =()=>{
+     handleSignOut()
+     .then(() => {})
+     .catch(err => console.log(err));
+  }
+
   return (
     <div className="py-5 container mx-auto">
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <div className="logo-wrapper">
           <Link to={"/"}>
             <img src={logo} alt="" />
@@ -43,11 +55,18 @@ const Header = () => {
         </div>
         <div>
           <div>
-            <Link to={"/login"}>
-              <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-blue-600 text-white text-base tracking-widest font-medium rounded">
-                Login
-              </button>
-            </Link>
+             {
+                user?.uid ? <div className="flex items-center">
+                   <img title={user.displayName} className=" rounded-full h-14 mr-7" src={user.photoURL} alt="" />
+                    <button onClick={handleLogOut} className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-blue-600 text-white text-base tracking-widest font-medium rounded">Log Out</button>
+                </div> :
+                <Link to={"/login"}>
+                <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-blue-600 text-white text-base tracking-widest font-medium rounded">
+                  Login
+                </button>
+              </Link>
+             }
+           
           </div>
         </div>
       </div>
