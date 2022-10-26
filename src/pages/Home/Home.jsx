@@ -5,7 +5,7 @@ import CourseCard from "../../components/CourseCard/CourseCard";
 
 const Home = () => {
   const featuredCourse = useLoaderData();
-  console.log(featuredCourse);
+
   return (
     <div>
       <div

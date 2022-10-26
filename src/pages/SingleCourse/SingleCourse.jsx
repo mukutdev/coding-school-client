@@ -1,8 +1,8 @@
 import React from "react";
 import { BiCaretRightCircle } from "react-icons/bi";
 import { MdOutlineTopic } from "react-icons/md";
-import { ImUserPlus } from "react-icons/im";
-import { MdLanguage} from "react-icons/md";
+import { AiOutlineUserAdd} from "react-icons/ai";
+import { CiGlobe} from "react-icons/ci";
 import { TbUserCircle ,TbClock, TbNotes, } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
 import bg_breadcumb from "../../assets/breadcumb-bg.jpg";
@@ -70,7 +70,7 @@ const SingleCourse = () => {
               </div>
 
               <div className="my-6">
-                <Link>
+                <Link to={`/checkout/${id}`}>
                   <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-black text-white text-base tracking-widest font-medium rounded">
                     Get Premium Access
                   </button>
@@ -96,7 +96,7 @@ const SingleCourse = () => {
                     <span className="font-medium">Lesson</span> : {lectures}
                   </p>
                   <p className="flex items-center gap-2 mb-2 text-lg border-b border-dashed py-2 border-slate-300">
-                    <ImUserPlus className="text-blue-600" />
+                    <AiOutlineUserAdd className="text-blue-600" />
                     <span className="font-medium">Students</span> : {students}
                   </p>
                   <p className="flex items-center gap-2 mb-2 text-lg border-b border-dashed py-2 border-slate-300">
@@ -104,11 +104,13 @@ const SingleCourse = () => {
                     <span className="font-medium">Duration</span> : {duration}
                   </p>
                   <p className="flex items-center gap-2 mb-2 text-lg border-b border-dashed py-2 border-slate-300">
-                    <MdLanguage className="text-blue-600" />
+                    <CiGlobe className="text-blue-600" />
                     <span className="font-medium">Language</span> : {lang}
                   </p>
                    
-                   <button className=" my-6 py-3 px-6 uppercase bg-blue-600 hover:bg-black text-white text-base tracking-widest font-medium rounded">Download Curriculum </button>
+                  <Link>
+                  <button className=" my-6 py-3 px-6 uppercase bg-blue-600 hover:bg-black text-white text-base tracking-widest font-medium rounded">Download Curriculum </button>
+                  </Link>
                 </div>
               </div>
             </div>
