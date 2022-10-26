@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
@@ -10,11 +10,17 @@ import "./Login.css";
 const Login = () => {
   const [message, setMessage] = useState("");
   // sign in context
-  const { handleSignInWithEmailPass , handleGoogleSignInMethod } = useContext(AuthProviderContext);
+  const {
+    handleSignInWithEmailPass,
+    handleGoogleSignInMethod,
+    handleGithubSignInMethod,
+  } = useContext(AuthProviderContext);
 
   //google provider
+  const googleProvider = new GoogleAuthProvider();
+  // github provider
+  const githubProvider = new GithubAuthProvider();
 
-  const googleProvider = new GoogleAuthProvider()
   // email pass sign in method
   const handleUserSignIn = event => {
     event.preventDefault();
@@ -33,14 +39,23 @@ const Login = () => {
   };
 
   //google sign in method
-    const handleGoogleLogin = ()=>{
-      handleGoogleSignInMethod(googleProvider)
+  const handleGoogleLogin = () => {
+    handleGoogleSignInMethod(googleProvider)
       .then(result => {
         const user = result.user;
         console.log(user);
       })
-      .catch(err => console.log('error message' , err))
-    }
+      .catch(err => console.log("error message", err));
+  };
+  // github sign in method
+  const handleGithubLogin = () => {
+    handleGithubSignInMethod(githubProvider)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch(err => console.log("error message", err));
+  };
 
   return (
     <section>
@@ -87,10 +102,16 @@ const Login = () => {
                 <Link className=" hover:underline">Forget Password ?</Link>
               </div>
               <div className="flex flex-col mt-4 ">
-                <button onClick={handleGoogleLogin} className="flex items-center justify-center bg-slate-100 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium rounded">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="flex items-center justify-center bg-slate-100 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium rounded"
+                >
                   <FcGoogle className="mr-5 text-2xl" /> Sign in With Google
                 </button>
-                <button className="flex items-center justify-center bg-slate-100 mt-3 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium rounded">
+                <button
+                  onClick={handleGithubLogin}
+                  className="flex items-center justify-center bg-slate-100 mt-3 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium rounded"
+                >
                   <GoMarkGithub className="mr-5 text-2xl" /> Sign in With Github
                 </button>
               </div>
