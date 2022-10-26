@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import bg_breadcumb from "../../assets/breadcumb-bg.jpg";
+import { AuthProviderContext } from "../../context/AuthContext";
 const Register = () => {
+  //  create new user context
+  const { handleNewUserWithEmailPass, handleUpdateProfile } =
+    useContext(AuthProviderContext);
+
+  const [message, setMessage] = useState("");
+
+  const handleCreateNewUser = event => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photoUrl = form.photoURL.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+
+    if (password !== confirmPassword) {
+      setMessage(<p className="text-red-600">Password doesn't matched </p>);
+      return;
+    }
+
+    // handling email password register option
+    handleNewUserWithEmailPass(email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        handleUpdateProfile(name, photoUrl)
+        .then(() => {})
+        .catch(err => console.log("error message", err))
+
+        setMessage(<p>Account created successfully</p>)
+      })
+      .catch(err => console.log("error message msg", err));
+  };
+
   return (
     <section>
       <div
@@ -18,7 +53,7 @@ const Register = () => {
           <div className="form-wrapper rounded-sm p-5">
             <h2 className="text-xl">Hi , Welcome Back !</h2>
             <div className="my-7">
-              <form>
+              <form onSubmit={handleCreateNewUser}>
                 <div className="flex flex-col gap-3 my-4">
                   <input
                     type="name"
@@ -51,7 +86,7 @@ const Register = () => {
                     type="password"
                     name="password"
                     placeholder="Password"
-                    className="input-controller py-2 px-3 outline-gray-200 rounded"
+                    className="input-controller py-2 px-3 outline-gray-200 rounded font-medium"
                     required
                   />
                 </div>
@@ -64,24 +99,30 @@ const Register = () => {
                     required
                   />
                 </div>
-                <div className="flex flex-col gap-3 my-4">
+                {/* <div className="flex flex-col gap-3 my-4">
                   <input
                     type="checkbox"
                     name="check"
                     value="I accept terms and conditions"
                     required
                   />
-                </div>
+                </div> */}
                 <div className="flex flex-col gap-3 my-4">
                   <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-gray-800 text-white text-base tracking-widest font-medium rounded">
                     Register
                   </button>
                 </div>
               </form>
-        
+
               <div className="flex flex-col gap-3 my-4">
-                 <p>Already have an account ? <Link className="text-blue-600 hover:underline" to={'/login'}>Login Now !</Link></p>
+                <p>
+                  Already have an account ?{" "}
+                  <Link className="text-blue-600 hover:underline" to={"/login"}>
+                    Login Now !
+                  </Link>
+                </p>
               </div>
+              <div>{message ? message : undefined}</div>
             </div>
           </div>
         </div>

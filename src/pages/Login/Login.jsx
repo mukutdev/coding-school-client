@@ -1,11 +1,27 @@
 import React from "react";
+import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
 import { Link } from "react-router-dom";
 import bg_breadcumb from "../../assets/breadcumb-bg.jpg";
+import { AuthProviderContext } from "../../context/AuthContext";
+
 
 import "./Login.css";
 const Login = () => {
+
+  // sign in context
+
+  const  {handleSignInWithEmailPass} = useContext(AuthProviderContext)
+
+  const handleUserSignIn = (event) =>{
+       event.preventDefault()
+       const form = event.target
+       const email = form.email.value
+       const password = form.password.value
+       console.log(email, password);
+  }
+
   return (
     <section>
       <div
@@ -22,7 +38,7 @@ const Login = () => {
           <div className="form-wrapper rounded-sm p-5">
             <h2 className="text-xl">Hi , Welcome Back !</h2>
             <div className="my-7">
-              <form>
+              <form onSubmit={handleUserSignIn}>
                 <div className="flex flex-col gap-3">
                   <input
                     type="email"
@@ -54,10 +70,10 @@ const Login = () => {
               </div>
               <div className="flex flex-col mt-4 ">
      
-                    <button className="flex items-center justify-center bg-slate-100 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium">
+                    <button className="flex items-center justify-center bg-slate-100 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium rounded">
                     <FcGoogle className="mr-5 text-2xl"/> Sign in With Google
                    </button>
-                    <button className="flex items-center justify-center bg-slate-100 mt-3 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium">
+                    <button className="flex items-center justify-center bg-slate-100 mt-3 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium rounded">
                     <GoMarkGithub className="mr-5 text-2xl"/> Sign in With Github
                    </button>
 

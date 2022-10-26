@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "coding-school-f35cb",
   storageBucket: "coding-school-f35cb.appspot.com",
   messagingSenderId: "1044517380211",
-  appId: "1:1044517380211:web:fa41526b778c01833e8a06"
+  appId: "1:1044517380211:web:fa41526b778c01833e8a06",
 };
 
 // Initialize Firebase
