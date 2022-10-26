@@ -30,7 +30,7 @@ const CourseCard = ({ course }) => {
       </div>
       <div className="pt-4">
         <Link
-          to={`/courses/${id}`}
+          to={`/course/${id}`}
           className="text-xl font-medium hover:text-blue-600"
         >
           {name}

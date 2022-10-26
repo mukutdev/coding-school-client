@@ -6,6 +6,7 @@ import Faq from "../../pages/Faq/Faq";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
+import SingleCourse from "../../pages/SingleCourse/SingleCourse";
 
 export const router = createBrowserRouter([
   {
@@ -14,13 +15,19 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch('http://localhost:5000/courses/featured'),
+        loader: () => fetch("http://localhost:5000/courses/featured"),
         element: <Home></Home>,
       },
       {
         path: "/courses",
-        loader: () => fetch('http://localhost:5000/courses'),
+        loader: () => fetch("http://localhost:5000/courses"),
         element: <Courses></Courses>,
+      },
+      {
+        path: "/course/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/course/${params.id}`),
+        element: <SingleCourse></SingleCourse>,
       },
       {
         path: "/blogs",
