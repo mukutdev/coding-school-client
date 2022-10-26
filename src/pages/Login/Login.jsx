@@ -1,26 +1,32 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
 import { Link } from "react-router-dom";
 import bg_breadcumb from "../../assets/breadcumb-bg.jpg";
 import { AuthProviderContext } from "../../context/AuthContext";
 
-
 import "./Login.css";
 const Login = () => {
-
+  const [message, setMessage] = useState("");
   // sign in context
+  const { handleSignInWithEmailPass } = useContext(AuthProviderContext);
 
-  const  {handleSignInWithEmailPass} = useContext(AuthProviderContext)
-
-  const handleUserSignIn = (event) =>{
-       event.preventDefault()
-       const form = event.target
-       const email = form.email.value
-       const password = form.password.value
-       console.log(email, password);
-  }
+  // email pass sign in method
+  const handleUserSignIn = event => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    handleSignInWithEmailPass(email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch(err => {
+        const errorMessage = err.message;
+        console.log(errorMessage.split("/")[1].split(")")[0]);
+      });
+  };
 
   return (
     <section>
@@ -64,22 +70,26 @@ const Login = () => {
                 </div>
               </form>
               <div>
-                <Link className=" hover:underline">
-                  Forget Password ?
-                </Link>
+                <Link className=" hover:underline">Forget Password ?</Link>
               </div>
               <div className="flex flex-col mt-4 ">
-     
-                    <button className="flex items-center justify-center bg-slate-100 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium rounded">
-                    <FcGoogle className="mr-5 text-2xl"/> Sign in With Google
-                   </button>
-                    <button className="flex items-center justify-center bg-slate-100 mt-3 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium rounded">
-                    <GoMarkGithub className="mr-5 text-2xl"/> Sign in With Github
-                   </button>
-
+                <button className="flex items-center justify-center bg-slate-100 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium rounded">
+                  <FcGoogle className="mr-5 text-2xl" /> Sign in With Google
+                </button>
+                <button className="flex items-center justify-center bg-slate-100 mt-3 hover:bg-blue-600 hover:text-white py-3 px-5 text-base font-medium rounded">
+                  <GoMarkGithub className="mr-5 text-2xl" /> Sign in With Github
+                </button>
               </div>
               <div className="flex flex-col gap-3 my-4">
-                 <p>New User ? <Link className="text-blue-600 hover:underline" to={'/register'}>Register Now !</Link></p>
+                <p>
+                  New User ?{" "}
+                  <Link
+                    className="text-blue-600 hover:underline"
+                    to={"/register"}
+                  >
+                    Register Now !
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
