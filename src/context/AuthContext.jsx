@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  signInWithPopup,
   updateProfile,
 } from "firebase/auth";
 import React, { createContext } from "react";
@@ -34,7 +35,19 @@ const AuthContext = ({ children }) => {
     return signInWithEmailAndPassword(auth , email, password);
   }
 
-  const userInfo = { user, handleNewUserWithEmailPass, handleUpdateProfile , handleSignInWithEmailPass };
+  // handleGoogleSignInMethod
+
+  const handleGoogleSignInMethod = (provider)=>{
+     return signInWithPopup(auth , provider)
+  }
+
+  //handleGithubSignInMethod
+
+  const handleGithubSignInMethod = (provider)=>{
+    return signInWithPopup(auth , provider)
+  }
+
+  const userInfo = { user, handleNewUserWithEmailPass, handleUpdateProfile , handleSignInWithEmailPass , handleGoogleSignInMethod,handleGithubSignInMethod };
   return (
     <AuthProviderContext.Provider value={userInfo}>
       {children}
