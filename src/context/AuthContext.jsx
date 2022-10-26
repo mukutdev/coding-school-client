@@ -16,7 +16,7 @@ const auth = getAuth(app);
 
 const AuthContext = ({ children }) => {
 
-    const [user , setUser] = useState(null || {})
+    const [user , setUser] = useState(null)
 
 
   // handle new user function

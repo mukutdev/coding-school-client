@@ -62,7 +62,7 @@ const Header = () => {
                 </div> :
                 <Link to={"/login"}>
                 <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-blue-600 text-white text-base tracking-widest font-medium rounded">
-                  Login
+                  Log in
                 </button>
               </Link>
              }
