@@ -4,7 +4,7 @@ import logo from "../../assets/logo.png";
 import { AuthProviderContext } from "../../context/AuthContext";
 
 const Header = () => {
-  const { user, handleSignOut, loading } = useContext(AuthProviderContext);
+  const { user, handleSignOut } = useContext(AuthProviderContext);
 
   const activeClass = {
     backgroundColor: "#2563eb",
