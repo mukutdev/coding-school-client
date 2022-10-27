@@ -16,7 +16,9 @@ const Home = () => {
       >
         <div className="container mx-auto">
           <div className="md:w-1/3 mx-7 md:mx-0 bg-zinc-50 p-6 rounded">
-            <h2 className="md:text-2xl text-xl font-medium">Welcome to Coding School</h2>
+            <h2 className="md:text-2xl text-xl font-medium">
+              Welcome to Coding School
+            </h2>
             <p className="md:text-4xl text-2xl font-semibold my-7 md:leading-10">
               Get start carrier with Quality Learning
             </p>

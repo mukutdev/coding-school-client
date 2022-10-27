@@ -1,31 +1,28 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/logo.png";
 import { AuthProviderContext } from "../../context/AuthContext";
 
 const Header = () => {
-
-  const { user , handleSignOut , loading} = useContext(AuthProviderContext);
+  const { user, handleSignOut, loading } = useContext(AuthProviderContext);
 
   const activeClass = {
     backgroundColor: "#2563eb",
     color: "#fff",
   };
 
- 
- 
   // handle logout
- 
-  const handleLogOut =()=>{
-     handleSignOut()
-  }
+
+  const handleLogOut = () => {
+    handleSignOut();
+  };
 
   return (
     <div className="py-5 container mx-auto">
       <div className="flex justify-between items-center">
         <div className="logo-wrapper">
           <Link to={"/"}>
-            <img src={logo} alt="" />
+            <img className="h-16" src={logo} alt="" />
           </Link>
         </div>
         <div className="ml-auto md:mr-16 mr-0">
@@ -54,20 +51,28 @@ const Header = () => {
           </nav>
         </div>
         <div>
-          <div>
-             {
-                user?.uid ? <div className="flex items-center">
-                   <img title={user.displayName} className=" rounded-full h-14 mr-7" src={user.photoURL} alt="" />
-                    <button onClick={handleLogOut} className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-blue-600 text-white text-base tracking-widest font-medium rounded">Log Out</button>
-                </div> :
-                <Link to={"/login"}>
-                <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-blue-600 text-white text-base tracking-widest font-medium rounded">
-                  Log in
-                </button>
-              </Link>
-             }
-           
-          </div>
+          {user?.uid ? (
+            <div className="flex items-center">
+              <img
+                title={user.displayName}
+                className=" rounded-full h-14 mr-7"
+                src={user.photoURL}
+                alt=""
+              />
+              <button
+                onClick={handleLogOut}
+                className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-blue-600 text-white text-base tracking-widest font-medium rounded"
+              >
+                Log Out
+              </button>
+            </div>
+          ) : (
+            <Link to={"/login"}>
+              <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-blue-600 text-white text-base tracking-widest font-medium rounded">
+                Log in
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
