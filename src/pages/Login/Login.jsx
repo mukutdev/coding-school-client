@@ -2,13 +2,16 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import bg_breadcumb from "../../assets/breadcumb-bg.jpg";
 import { AuthProviderContext } from "../../context/AuthContext";
 
 import "./Login.css";
 const Login = () => {
   const [message, setMessage] = useState("");
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from.pathname || '/'
   // sign in context
   const {
     handleSignInWithEmailPass,
@@ -31,6 +34,7 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
+        navigate(from , {replace : true})
       })
       .catch(err => {
         const errorMessage = err.message;
@@ -44,6 +48,7 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
+        navigate(from , {replace : true})
       })
       .catch(err => console.log("error message", err));
   };
@@ -53,6 +58,7 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
+        navigate(from , {replace : true})
       })
       .catch(err => console.log("error message", err));
   };

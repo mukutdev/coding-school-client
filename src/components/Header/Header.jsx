@@ -5,19 +5,19 @@ import { AuthProviderContext } from "../../context/AuthContext";
 
 const Header = () => {
 
-  const { user , handleSignOut} = useContext(AuthProviderContext);
+  const { user , handleSignOut , loading} = useContext(AuthProviderContext);
 
   const activeClass = {
     backgroundColor: "#2563eb",
     color: "#fff",
   };
 
+ 
+ 
   // handle logout
  
   const handleLogOut =()=>{
      handleSignOut()
-     .then(() => {})
-     .catch(err => console.log(err));
   }
 
   return (

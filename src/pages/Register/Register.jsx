@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import bg_breadcumb from "../../assets/breadcumb-bg.jpg";
 import { AuthProviderContext } from "../../context/AuthContext";
 const Register = () => {
@@ -8,8 +8,11 @@ const Register = () => {
     useContext(AuthProviderContext);
 
   const [message, setMessage] = useState("");
-
-  const handleCreateNewUser = event => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+   
+    const handleCreateNewUser = event => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -31,7 +34,7 @@ const Register = () => {
         handleUpdateProfile(name, photoUrl)
           .then(() => {})
           .catch(err => console.log("error message", err));
-
+        navigate(from, { replace: true });
         setMessage(<p>Account created successfully</p>);
       })
       .catch(err => console.log("error message msg", err));
