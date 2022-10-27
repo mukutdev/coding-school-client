@@ -99,9 +99,9 @@ const Login = () => {
                   </button>
                 </div>
               </form>
-              <div>
+              {/* <div>
                 <Link className=" hover:underline dark:text-white">Forget Password ?</Link>
-              </div>
+              </div> */}
               <div className="flex flex-col mt-4 ">
                 <button
                   onClick={handleGoogleLogin}
