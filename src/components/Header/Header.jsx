@@ -28,11 +28,11 @@ const Header = () => {
             <img src={logo} alt="" />
           </Link>
         </div>
-        <div className="ml-auto mr-16">
-          <nav className="flex justify-between">
+        <div className="ml-auto md:mr-16 mr-0">
+          <nav className="flex md:flex-row flex-col justify-between">
             <NavLink
               style={({ isActive }) => (isActive ? activeClass : undefined)}
-              className="mr-3 py-3 px-6 uppercase hover:bg-blue-600 hover:text-white text-base tracking-widest font-medium rounded"
+              className="md:mr-3 mr-0 py-3 md:px-6  px-0 uppercase hover:bg-blue-600 hover:text-white text-base tracking-widest font-medium rounded"
               to={"/courses"}
             >
               Courses

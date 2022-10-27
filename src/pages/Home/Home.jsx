@@ -9,15 +9,15 @@ const Home = () => {
   return (
     <div>
       <div
-        className="py-72"
+        className="md:py-72 py-24"
         bg-cover="true"
         bg-center="true"
         style={{ backgroundImage: `url(${background})` }}
       >
         <div className="container mx-auto">
-          <div className="w-1/3 bg-zinc-50 p-6 rounded">
-            <h2 className="text-2xl font-medium">Welcome to Coding School</h2>
-            <p className="text-4xl font-semibold my-7 leading-10">
+          <div className="md:w-1/3 mx-7 md:mx-0 bg-zinc-50 p-6 rounded">
+            <h2 className="md:text-2xl text-xl font-medium">Welcome to Coding School</h2>
+            <p className="md:text-4xl text-2xl font-semibold my-7 md:leading-10">
               Get start carrier with Quality Learning
             </p>
             <Link to={"/courses"}>
@@ -30,15 +30,15 @@ const Home = () => {
       </div>
 
       <div style={{ backgroundColor: "#F3F7FB" }}>
-        <div className="py-16 container mx-auto">
+        <div className="md:py-16 py-10 container mx-auto">
           <div className="flex flex-col justify-center">
             <h2 className="text-blue-600 text-lg text-center font-semibold tracking-widest">
               POPULAR COURSES
             </h2>
-            <h3 className="text-4xl font-semibold text-center mt-4">
+            <h3 className="md:text-4xl text-2xl font-semibold text-center mt-4">
               Explore Featured Courses
             </h3>
-            <div className="my-12 grid grid-cols-3 justify-between gap-14">
+            <div className="my-12 grid md:grid-cols-3 grid-cols-1 justify-between gap-14">
               {featuredCourse.map(course => (
                 <CourseCard key={course.id} course={course}></CourseCard>
               ))}
