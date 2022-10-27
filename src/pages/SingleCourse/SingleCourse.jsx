@@ -1,12 +1,14 @@
+import { jsPDF } from "jspdf";
 import React from "react";
+import { AiOutlineUserAdd } from "react-icons/ai";
 import { BiCaretRightCircle } from "react-icons/bi";
+import { CiGlobe } from "react-icons/ci";
 import { MdOutlineTopic } from "react-icons/md";
-import { AiOutlineUserAdd} from "react-icons/ai";
-import { CiGlobe} from "react-icons/ci";
-import { TbUserCircle ,TbClock, TbNotes, } from "react-icons/tb";
+import { TbClock, TbNotes, TbUserCircle } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
 import bg_breadcumb from "../../assets/breadcumb-bg.jpg";
 import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
+
 const SingleCourse = () => {
   const course = useLoaderData();
   const {
@@ -22,9 +24,17 @@ const SingleCourse = () => {
     category,
     description,
     outcomes,
-    lang
+    lang,
   } = course;
   console.log(course);
+
+  const downloadPdf = () => {
+    const doc = new jsPDF();
+    doc.text(`${name}`, 10, 10);
+    doc.addImage(`${thumb}`, "JPEG", 15, 40, 80, 80);
+
+    doc.save(`${name}.pdf`);
+  };
 
   return (
     <section>
@@ -107,9 +117,14 @@ const SingleCourse = () => {
                     <CiGlobe className="text-blue-600" />
                     <span className="font-medium">Language</span> : {lang}
                   </p>
-                   
+
                   <Link>
-                  <button className=" my-6 py-3 px-6 uppercase bg-blue-600 hover:bg-black text-white text-base tracking-widest font-medium rounded">Download Curriculum </button>
+                    <button
+                      onClick={downloadPdf}
+                      className=" my-6 py-3 px-6 uppercase bg-blue-600 hover:bg-black text-white text-base tracking-widest font-medium rounded"
+                    >
+                      Download Curriculum{" "}
+                    </button>
                   </Link>
                 </div>
               </div>

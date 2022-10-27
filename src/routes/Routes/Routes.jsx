@@ -19,24 +19,30 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("http://localhost:5000/courses/featured"),
+        loader: () =>
+          fetch("https://coding-school-server-ten.vercel.app/courses/featured"),
         element: <Home></Home>,
       },
       {
         path: "/courses",
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () =>
+          fetch("https://coding-school-server-ten.vercel.app/courses"),
         element: <Courses></Courses>,
       },
       {
         path: "/course/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(
+            `https://coding-school-server-ten.vercel.app/course/${params.id}`
+          ),
         element: <SingleCourse></SingleCourse>,
       },
       {
         path: "/checkout/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(
+            `https://coding-school-server-ten.vercel.app/course/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <Checkout></Checkout>
