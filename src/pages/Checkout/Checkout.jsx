@@ -16,7 +16,7 @@ const Checkout = () => {
         content={"Checkout"}
       ></BackgroundImage>
       <div className="my-8">
-        <div className="w-1/3 mx-auto shadow-lg rounded-lg p-10 dark:bg-slate-800">
+        <div className="md:w-1/3 mx-auto shadow-lg rounded-lg p-10 dark:bg-slate-800">
           <h3 className="text-2xl text-center font-semibold mb-4 dark:text-white">
             Thanks For Choosing {name} Course
           </h3>

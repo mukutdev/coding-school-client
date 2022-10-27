@@ -41,15 +41,15 @@ const SingleCourse = () => {
       <BackgroundImage img={bg_breadcumb} content={name}></BackgroundImage>
 
       <div className="container mx-auto">
-        <div className="grid grid-cols-3 my-14 gap-16">
-          <div className="col-span-2 ml-20 ">
+        <div className="grid md:grid-cols-3 grid-cols-1 my-14 md:gap-16">
+          <div className="col-span-2 md:ml-20 ">
             <div className="border p-10 rounded-lg shadow dark:bg-slate-800 dark:border-none">
               <div>
                 <img className="rounded-lg" src={courseImg} alt="" />
               </div>
               <div className="mt-7">
                 <h2 className="text-3xl font-semibold dark:text-white">{name}</h2>
-                <div className="flex mt-5 gap-5">
+                <div className="flex mt-5 md:gap-5">
                   <span className="bg-blue-600 px-4 py-1 rounded-full text-white flex items-center gap-2 text-base font-medium">
                     {" "}
                     <TbUserCircle /> Instructor : {instructor.name}
@@ -88,7 +88,7 @@ const SingleCourse = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-1 mr-20">
+          <div className="col-span-1 md:mr-20">
             <div className=" shadow rounded-lg sticky top-3 dark:bg-slate-800">
               <div>
                 <img src={thumb} alt="" />
