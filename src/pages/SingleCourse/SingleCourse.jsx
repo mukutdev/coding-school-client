@@ -49,8 +49,8 @@ const SingleCourse = () => {
               </div>
               <div className="mt-7">
                 <h2 className="text-3xl font-semibold dark:text-white">{name}</h2>
-                <div className="flex mt-5 md:gap-5">
-                  <span className="bg-blue-600 px-4 py-1 rounded-full text-white flex items-center gap-2 text-base font-medium">
+                <div className="md:flex mt-5 md:gap-5">
+                  <span className="bg-blue-600 px-4 py-1 md:mb-0 mb-3 rounded-full text-white flex items-center gap-2 text-base font-medium">
                     {" "}
                     <TbUserCircle /> Instructor : {instructor.name}
                   </span>
