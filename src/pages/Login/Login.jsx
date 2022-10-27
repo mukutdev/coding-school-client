@@ -39,6 +39,7 @@ const Login = () => {
       })
       .catch(err => {
         const errorMessage = err.message;
+        setMessage(errorMessage.split("/")[1].split(")")[0])
         console.log(errorMessage.split("/")[1].split(")")[0]);
       });
   };
@@ -126,6 +127,7 @@ const Login = () => {
                   </Link>
                 </p>
               </div>
+              <div className="dark:text-white">{message ? message : undefined}</div>
             </div>
           </div>
         </div>

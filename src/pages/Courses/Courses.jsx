@@ -23,7 +23,7 @@ const Courses = () => {
               </div>
             </div>
             <div className="md:col-span-1 mx-3 ">
-              <div className="bg-white dark:bg-slate-900 pt-5 px-8 rounded-lg sticky top-3">
+              <div className="bg-white dark:bg-slate-800 pt-5 px-8 rounded-lg sticky top-3">
                 <h2 className="text-2xl font-semibold text-center dark:text-white">
                   Most Purchased Courses
                 </h2>

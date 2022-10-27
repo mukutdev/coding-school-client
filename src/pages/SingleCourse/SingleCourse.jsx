@@ -42,13 +42,13 @@ const SingleCourse = () => {
 
       <div className="container mx-auto">
         <div className="grid grid-cols-3 my-14 gap-16">
-          <div className="col-span-2 ml-20">
-            <div className="border p-10 rounded-lg shadow">
+          <div className="col-span-2 ml-20 ">
+            <div className="border p-10 rounded-lg shadow dark:bg-slate-800 dark:border-none">
               <div>
                 <img className="rounded-lg" src={courseImg} alt="" />
               </div>
               <div className="mt-7">
-                <h2 className="text-3xl font-semibold">{name}</h2>
+                <h2 className="text-3xl font-semibold dark:text-white">{name}</h2>
                 <div className="flex mt-5 gap-5">
                   <span className="bg-blue-600 px-4 py-1 rounded-full text-white flex items-center gap-2 text-base font-medium">
                     {" "}
@@ -61,19 +61,19 @@ const SingleCourse = () => {
                 </div>
               </div>
             </div>
-            <div className="shadow rounded-lg p-10 my-10">
-              <h2 className="text-2xl font-semibold">About The Course</h2>
-              <p className="my-4 text-lg">{description}</p>
-              <h2 className="text-2xl font-semibold mt-3">
+            <div className="shadow rounded-lg p-10 my-10 dark:bg-slate-800">
+              <h2 className="text-2xl font-semibold dark:text-white">About The Course</h2>
+              <p className="my-4 text-lg dark:text-white">{description}</p>
+              <h2 className="text-2xl font-semibold mt-3 dark:text-white">
                 What You will Learn
               </h2>
               <div className="my-5">
                 {outcomes.map((list, i) => (
                   <li
                     key={i}
-                    className="list-none flex items-center gap-2 my-3 text-lg font-medium"
+                    className="list-none flex items-center gap-2 my-3 text-lg font-medium dark:text-white"
                   >
-                    <BiCaretRightCircle className="text-blue-600 text-lg" />
+                    <BiCaretRightCircle className="text-blue-600 dark:text-white text-lg" />
                     {list}
                   </li>
                 ))}
@@ -81,7 +81,7 @@ const SingleCourse = () => {
 
               <div className="my-6">
                 <Link to={`/checkout/${id}`}>
-                  <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-black text-white text-base tracking-widest font-medium rounded">
+                  <button className="mr-3 py-3 px-6 uppercase bg-blue-600 dark:hover:bg-slate-700 hover:bg-black text-white text-base tracking-widest font-medium rounded">
                     Get Premium Access
                   </button>
                 </Link>
@@ -89,13 +89,13 @@ const SingleCourse = () => {
             </div>
           </div>
           <div className="col-span-1 mr-20">
-            <div className=" shadow rounded-lg sticky top-3">
+            <div className=" shadow rounded-lg sticky top-3 dark:bg-slate-800">
               <div>
                 <img src={thumb} alt="" />
               </div>
               <div className="py-8 px-10">
-                <h1 className="font-semibold text-2xl"> ${price}</h1>
-                <div className="my-6">
+                <h1 className="font-semibold text-2xl dark:text-white"> ${price}</h1>
+                <div className="my-6 dark:text-white">
                   <p className="flex items-center gap-2 mb-2 text-lg border-b border-dashed py-2 border-slate-300">
                     <TbUserCircle className="text-blue-600" />
                     <span className="font-medium">Instructor</span> :
@@ -121,7 +121,7 @@ const SingleCourse = () => {
                   <Link>
                     <button
                       onClick={downloadPdf}
-                      className=" my-6 py-3 px-6 uppercase bg-blue-600 hover:bg-black text-white text-base tracking-widest font-medium rounded"
+                      className=" my-6 py-3 px-6 uppercase dark:hover:bg-slate-700 bg-blue-600 hover:bg-black  text-white text-base tracking-widest font-medium rounded"
                     >
                       Download Curriculum{" "}
                     </button>
