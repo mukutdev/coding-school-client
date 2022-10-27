@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import bg_breadcumb from "../../assets/breadcumb-bg.jpg";
+import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
 import { AuthProviderContext } from "../../context/AuthContext";
 const Register = () => {
   //  create new user context
@@ -42,19 +43,12 @@ const Register = () => {
 
   return (
     <section>
-      <div
-        style={{ backgroundImage: `url(${bg_breadcumb})` }}
-        className="h-80 bg-cover flex items-center justify-center"
-      >
-        <h2 className="text-4xl uppercase tracking-widest text-white font-semibold">
-          Login
-        </h2>
-      </div>
+     <BackgroundImage img={bg_breadcumb} content={"Register"}></BackgroundImage>
 
       <div className="my-16">
-        <div className="w-96 mx-auto">
+        <div className="md:w-96 md:mx-auto mx-4 dark:bg-slate-800">
           <div className="form-wrapper rounded-sm p-5">
-            <h2 className="text-xl">Hi , Welcome Back !</h2>
+            <h2 className="text-xl dark:text-white">Hi , Please Create Your Account!</h2>
             <div className="my-7">
               <form onSubmit={handleCreateNewUser}>
                 <div className="flex flex-col gap-3 my-4">
@@ -117,7 +111,7 @@ const Register = () => {
                 </div>
               </form>
 
-              <div className="flex flex-col gap-3 my-4">
+              <div className="flex flex-col gap-3 my-4 dark:text-white">
                 <p>
                   Already have an account ?{" "}
                   <Link className="text-blue-600 hover:underline" to={"/login"}>
@@ -125,7 +119,7 @@ const Register = () => {
                   </Link>
                 </p>
               </div>
-              <div>{message ? message : undefined}</div>
+              <div className="dark:text-white">{message ? message : undefined}</div>
             </div>
           </div>
         </div>

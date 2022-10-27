@@ -15,8 +15,8 @@ const CourseCard = ({ course }) => {
   } = course;
   return (
     <div
-      className="pt-7 px-8  bg-white rounded-lg mx-2 md:mx-0"
-      style={{ boxShadow: "0px 3px 0px #dfeaf4" }}
+      className="pt-7 px-8  bg-white dark:bg-slate-800 rounded-lg mx-2 md:mx-0"
+      // style={{ boxShadow: "0px 3px 0px #dfeaf4" }}
     >
       <div className="relative">
         <img
@@ -31,7 +31,7 @@ const CourseCard = ({ course }) => {
       <div className="pt-4">
         <Link
           to={`/course/${id}`}
-          className="text-xl font-medium hover:text-blue-600"
+          className="text-xl dark:text-white font-medium hover:text-blue-600"
         >
           {name}
         </Link>
@@ -42,7 +42,7 @@ const CourseCard = ({ course }) => {
               src={instructor.instructorImg}
               alt=""
             />
-            <span className="text-base  text-blue-600">{instructor.name}</span>
+            <span className="text-base dark:text-white text-blue-600">{instructor.name}</span>
           </div>
           <div>
             <span className="bg-blue-600 text-white font-semibold px-6 py-1 rounded-full">
@@ -52,13 +52,13 @@ const CourseCard = ({ course }) => {
         </div>
         <div className="border-t border-dashed border-gray-300 my-3"></div>
         <div className="flex items-center justify-between py-3 flex-nowrap">
-          <span className="flex items-center justify-between gap-1 text-xs md:text-base">
+          <span className="flex items-center justify-between gap-1 text-xs md:text-base dark:text-white">
             <TbNotes /> Lesson : {lectures}
           </span>
-          <span className=" flex items-center justify-between gap-1 text-xs md:text-base">
+          <span className=" flex items-center justify-between gap-1 text-xs md:text-base dark:text-white">
             <TbUserCircle /> Students : {students}
           </span>
-          <span className="flex items-center justify-between gap-1 text-xs md:text-base">
+          <span className="flex items-center justify-between gap-1 text-xs md:text-base dark:text-white">
             <TbClock /> Duration : {duration}
           </span>
         </div>

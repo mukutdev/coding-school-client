@@ -3,8 +3,9 @@ import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import bg_breadcumb from "../../assets/breadcumb-bg.jpg";
+import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
 import { AuthProviderContext } from "../../context/AuthContext";
+import bg_breadcumb from "../../assets/breadcumb-bg.jpg";
 
 import "./Login.css";
 const Login = () => {
@@ -65,19 +66,12 @@ const Login = () => {
 
   return (
     <section>
-      <div
-        style={{ backgroundImage: `url(${bg_breadcumb})` }}
-        className="h-80 bg-cover flex items-center justify-center"
-      >
-        <h2 className="text-4xl uppercase tracking-widest text-white font-semibold">
-          Login
-        </h2>
-      </div>
+      <BackgroundImage img={bg_breadcumb} content={"Login"}></BackgroundImage>
 
       <div className="my-16">
-        <div className="w-96 mx-auto">
+        <div className="md:w-96 md:mx-auto mx-4 dark:bg-slate-800">
           <div className="form-wrapper rounded-sm p-5">
-            <h2 className="text-xl">Hi , Welcome Back !</h2>
+            <h2 className="text-xl dark:text-white">Hi , Welcome Back !</h2>
             <div className="my-7">
               <form onSubmit={handleUserSignIn}>
                 <div className="flex flex-col gap-3">
@@ -99,13 +93,13 @@ const Login = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-3 my-4">
-                  <button className="mr-3 py-3 px-6 uppercase bg-blue-600 hover:bg-gray-800 text-white text-base tracking-widest font-medium rounded">
+                  <button className="mr-3 py-3 px-6 uppercase hover:dark:bg-slate-700 bg-blue-600 hover:bg-gray-800 text-white text-base tracking-widest font-medium rounded">
                     Sign In
                   </button>
                 </div>
               </form>
               <div>
-                <Link className=" hover:underline">Forget Password ?</Link>
+                <Link className=" hover:underline dark:text-white">Forget Password ?</Link>
               </div>
               <div className="flex flex-col mt-4 ">
                 <button
@@ -121,7 +115,7 @@ const Login = () => {
                   <GoMarkGithub className="mr-5 text-2xl" /> Sign in With Github
                 </button>
               </div>
-              <div className="flex flex-col gap-3 my-4">
+              <div className="flex flex-col gap-3 my-4 dark:text-white">
                 <p>
                   New User ?{" "}
                   <Link

@@ -12,7 +12,7 @@ const Courses = () => {
         img={bg_breadcumb}
         content={"All Courses"}
       ></BackgroundImage>
-      <div style={{ backgroundColor: "#F3F7FB" }}>
+      <div className="bg-slate-100 dark:bg-slate-900">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-3 gap-12 py-10">
             <div className="md:col-span-2">
@@ -22,9 +22,9 @@ const Courses = () => {
                 ))}
               </div>
             </div>
-            <div className="md:col-span-1 mx-3">
-              <div className="bg-white pt-5 px-8 rounded-lg sticky top-3">
-                <h2 className="text-2xl font-semibold text-center">
+            <div className="md:col-span-1 mx-3 ">
+              <div className="bg-white dark:bg-slate-900 pt-5 px-8 rounded-lg sticky top-3">
+                <h2 className="text-2xl font-semibold text-center dark:text-white">
                   Most Purchased Courses
                 </h2>
                 <div className="flex flex-col gap-5 py-6">
@@ -38,7 +38,7 @@ const Courses = () => {
                         />
                       </div>
                       <div className="">
-                        <Link to={`/course/${course.id}`} className="hover:text-blue-600">
+                        <Link to={`/course/${course.id}`} className="hover:text-blue-600 dark:text-white">
                           {course.name}
                         </Link>
                         <div className="mt-3">

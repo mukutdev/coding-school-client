@@ -1,10 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import { useEffect } from "react";
+import { MdOutlineDarkMode, MdOutlineWbSunny } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { AuthProviderContext } from "../../context/AuthContext";
 
 const Header = () => {
   const { user, handleSignOut } = useContext(AuthProviderContext);
+
+  const [theme, setTheme] = useState(null);
+
+  // dark mood functionality
+
+  useEffect(()=>{
+
+    if(window.matchMedia('(prefers-color-scheme : dark)').matches){
+      setTheme('dark')
+    }else{
+      setTheme('light')
+    }
+
+  } , [])
+
+  useEffect(()=>{
+    if(theme === 'dark'){
+      document.documentElement.classList.add('dark')
+    }else{
+      document.documentElement.classList.remove('dark')
+    }
+  } ,[theme])
+
 
   const activeClass = {
     backgroundColor: "#2563eb",
@@ -17,6 +42,10 @@ const Header = () => {
     handleSignOut();
   };
 
+  const handleThemeSwitch = () =>{
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
+
   return (
     <div className="py-5 container mx-auto">
       <div className="flex justify-between items-center">
@@ -26,10 +55,10 @@ const Header = () => {
           </Link>
         </div>
         <div className="ml-auto md:mr-16 mr-0">
-          <nav className="flex md:flex-row flex-col justify-between">
+          <nav className="flex md:flex-row flex-col justify-between dark:text-white">
             <NavLink
               style={({ isActive }) => (isActive ? activeClass : undefined)}
-              className="md:mr-3 mr-0 py-3 md:px-6  px-0 uppercase hover:bg-blue-600 hover:text-white text-base tracking-widest font-medium rounded"
+              className="md:mr-3 mr-0 py-3 md:px-6  px-0 uppercase hover:bg-blue-600  hover:text-white text-base tracking-widest font-medium rounded"
               to={"/courses"}
             >
               Courses
@@ -49,6 +78,11 @@ const Header = () => {
               Faq
             </NavLink>
           </nav>
+        </div>
+        <div className="mr-3">
+          <button onClick={handleThemeSwitch} className="flex dark:text-white">
+             {theme === 'dark' ? <span className="flex items-center gap-1 text-base font-medium"> <MdOutlineDarkMode /> Dark Mood</span> :   <span className="flex items-center gap-1"> <MdOutlineWbSunny /> Light Mood</span>}
+          </button>
         </div>
         <div>
           {user?.uid ? (
